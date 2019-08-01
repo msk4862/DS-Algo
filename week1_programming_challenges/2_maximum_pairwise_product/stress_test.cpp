@@ -42,14 +42,14 @@ int main()
 	while(true) {
 		srand(time(NULL));
 
-		int n = rand() % 10 + 2;
+		int n = rand() % 100 + 2;
 		cout<<n<< "\n";
 
 		vector<int> v(n);
 
 		for (int i = 0; i < n; ++i)
 		{
-			v[i] = rand() % 10;
+			v[i] = rand() % 100000;
 		}
 
 		for (int i = 0; i < n; ++i)
