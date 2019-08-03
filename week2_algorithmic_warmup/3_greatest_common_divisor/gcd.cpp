@@ -13,12 +13,25 @@ int gcd_naive(int a, int b) {
 }
 
 
+int gcd_fast(int a, int b) {
+  while(a != 0 && b != 0) {
+    if(a<b) {
+      b %= a;
+    }
+    else {
+      a %= b;
+    }
+  }
 
+  int gcd = (a==0)? b : a;
+
+  return gcd;
+}
 
 
 int main() {
   int a, b;
   std::cin >> a >> b;
-  std::cout << gcd_naive(a, b) << std::endl;
+  std::cout << gcd_fast(a, b) << std::endl;
   return 0;
 }
