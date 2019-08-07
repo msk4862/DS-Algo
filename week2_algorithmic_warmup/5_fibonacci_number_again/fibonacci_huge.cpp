@@ -18,6 +18,11 @@ long long get_fibonacci_huge_naive(long long n, long long m) {
     return current % m;
 }
 
+/*
+fibonacci numbers modulo follows a periodic pattern,
+that always start with 01
+*/ 
+
 long long get_fibonacci_huge_fast(long long n, long long m) {
 
     long long previous = 0;
