@@ -34,7 +34,7 @@ int main() {
     cin >> n;
 
     //cout << fibonacci_naive(n) << '\n';
-    test_solution();
-    //cout << fibonacci_fast(n) << '\n';
+    //test_solution();
+    cout << fibonacci_fast(n) << '\n';
     return 0;
 }

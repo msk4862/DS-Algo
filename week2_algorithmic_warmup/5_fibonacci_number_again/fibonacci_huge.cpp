@@ -48,11 +48,6 @@ long long get_fibonacci_huge_fast(long long n, long long m) {
         pattern[pattern_len++] = current;
     }
 
-    for (int i = 0; i < pattern_len; ++i)
-    {
-        cout<<pattern[i];    
-    }
-    cout<<endl;
     long long rem = n % pattern_len;
     return pattern[rem];
 }
