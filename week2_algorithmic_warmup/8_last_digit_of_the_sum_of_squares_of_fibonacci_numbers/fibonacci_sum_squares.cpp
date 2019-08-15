@@ -1,8 +1,6 @@
 #include <iostream>
 
-using namespace std; 
-
-int fibonacci_sum_naive(long long n) {
+int fibonacci_sum_squares_naive(long long n) {
     if (n <= 1)
         return n;
 
@@ -13,14 +11,13 @@ int fibonacci_sum_naive(long long n) {
     for (long long i = 0; i < n - 1; ++i) {
         long long tmp_previous = previous;
         previous = current;
-        current = (tmp_previous + current);
-        sum += current;
+        current = tmp_previous + current;
+        sum += current * current;
     }
 
     return sum % 10;
 }
 
-//int - beacuse m=10 and it will return last digit only
 int get_fibonacci_huge_fast(long long n, long long m) {
 
     long long previous = 0;
@@ -49,27 +46,21 @@ int get_fibonacci_huge_fast(long long n, long long m) {
     return pattern[rem];
 }
 
-
-
-//S(n) = F(n+2) – 1
-
-int fibonacci_sum_fast(long long n) {
+/*
+sum of fibonacci squares till n = (Fn) * (Fn+1)
+ */
+long long fibonacci_sum_squares_fast(long long n) {
     if (n <= 1)
         return n;
+    int l1 = get_fibonacci_huge_fast(n, 10);
+    int l2 = get_fibonacci_huge_fast(n+1, 10);
 
-    int num_last_digit = get_fibonacci_huge_fast(n+2, 10);
-
-    if(num_last_digit == 0) {
-        return 9;
-    }
-    else{
-       return num_last_digit-1;
-    }
-
+    return (l1*l2)%10;
+    
 }
 
 int main() {
     long long n = 0;
     std::cin >> n;
-    std::cout << fibonacci_sum_fast(n);
+    std::cout << fibonacci_sum_squares_fast(n);
 }
