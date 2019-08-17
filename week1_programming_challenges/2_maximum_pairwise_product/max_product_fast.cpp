@@ -9,7 +9,6 @@ long long MaxPairwiseProduct_Fast(vector<int> v) {
 	
 	int n = v.size();
 
-	//sorting in descending order
 	sort(v.begin(), v.end()); 
 
 
