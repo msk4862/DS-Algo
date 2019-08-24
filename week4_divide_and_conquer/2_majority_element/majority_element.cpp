@@ -11,6 +11,44 @@ int get_majority_element(vector<int> &a, int left, int right) {
   return -1;
 }
 
+bool isMajority(vector<int> &a, int major_el) {
+  int count = 0;
+ for (int i = 0; i < a.size(); ++i)
+  {
+    if (a[i] == a[major_el])
+    {
+      count++;
+    }
+  } 
+
+  if (count > a.size()/2)
+    return true;
+  else 
+    return false;
+}
+
+//
+bool get_majority_element_fast(vector<int> &a) {
+  int major_el = 0, count =1;
+  for (int i = 1; i < a.size(); ++i)
+  {
+    if (a[major_el] == a[i])
+    {
+      count++;
+    }
+    else {
+      count--;
+    }
+    if (count == 0)
+    {
+      count =1;
+      major_el = i;
+    }
+  }
+
+  return isMajority(a, major_el);
+}
+
 int get_majority_element1(vector<int> &a) {
 
   vector<int>::iterator it = max_element(a.begin(), a.end());
@@ -46,7 +84,7 @@ int main() {
   for (size_t i = 0; i < a.size(); ++i) {
     std::cin >> a[i];
   }
-  std::cout << get_majority_element1(a) << "\n";
+  std::cout << get_majority_element_fast(a) << "\n";
 
   //std::cout << get_majority_element(a, 0, a.size()) << "\n";
 
