@@ -18,27 +18,36 @@ int partition2(vector<int> &a, int l, int r) {
   return j;
 }
 
-vector<int> partition3(vector<int> &a, int l, int r) {
+void partition3(vector<int> &a, int l, int r, int &m1, int &m2) {
   int x = a[l];
   int j = l;
-  int k = l;
-  for (int i = l + 1; i <= r; i++) {
+  int k = r;
+  int i = l +1;
+  while(i <= k) {
     if (a[i] < x) {
       j++;
       swap(a[i], a[j]);
+      i++;
     }
-    else if (a[i] == x)
+    else if (a[i] > x)
     {
-      k++;
-      swap(a[i], a[j + k]);
+      swap(a[i], a[k]);
+      k--;
+    }
+    else {
+      i++;
     }
   }
+/*
+  for (int i = 1; i <= k-r; ++i)
+  {
+    swap(a[j+i], a[r-i]);
+  }*/
+
   swap(a[l], a[j]);
 
-  vector<int> res(2);
-  res[0] = j;
-  res[1] = k;
-  return res;
+  m1 = j;
+  m2 = k;
 }
 
 void randomized_quick_sort(vector<int> &a, int l, int r) {
@@ -48,12 +57,13 @@ void randomized_quick_sort(vector<int> &a, int l, int r) {
 
   int k = l + rand() % (r - l + 1);
   swap(a[l], a[k]);
-  vector<int> res = partition3(a, l, r);
-
-  //randomized_quick_sort(a, l, m - 1);
-  //randomized_quick_sort(a, m + 1, r);
-  randomized_quick_sort(a, l, res[0] - 1);
-  randomized_quick_sort(a, res[1] + 1, r);
+  int m1, m2;
+  partition3(a, l, r, m1, m2);
+/*
+  randomized_quick_sort(a, l, m - 1);
+  randomized_quick_sort(a, m + 1, r);*/
+  randomized_quick_sort(a, l, m1 - 1);
+  randomized_quick_sort(a, m2 + 1, r);
 
 }
 
