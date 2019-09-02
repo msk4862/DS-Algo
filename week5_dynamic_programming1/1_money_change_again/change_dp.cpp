@@ -1,6 +1,8 @@
 #include <iostream>
 #include<vector>
 
+using namespace std;
+
 //Demonitions(coins) are 1,3,4
 int get_change(int m) {
   //write your code here
