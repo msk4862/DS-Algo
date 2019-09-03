@@ -40,14 +40,14 @@ int edit_distance(const string &str1, const string &str2) {
  		}
  	}
 
- 	for (int i = 0; i < n; ++i)
+ /*	for (int i = 0; i < n; ++i)
  	{
  		for (int j = 0; j < m; ++j)
  		{
  			std::cout<<distance[i][j]<<" ";
  		}
  		std::cout<<"\n";
- 	}
+ 	}*/
 
   return distance[n-1][m-1];
 }
