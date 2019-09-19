@@ -1,6 +1,5 @@
 import sys
 
-degree = 360//40
 
 def cal_degree(data):
     initial = int(data[0])
@@ -8,26 +7,9 @@ def cal_degree(data):
     second = int(data[2])
     third = int(data[3])
 
-    sum = 720
-    #clockwise
-    if first >= initial :
-        sum += abs(first-initial)*degree
-    else:
-        sum += abs(40 -first +initial)*degree
-    
-    sum += 360
+    sum = 1080
 
-    # anti-clockwise
-    if second <= first :
-        sum += abs(first -second)*degree
-    else:
-        sum += abs(first + 40-second)*degree
-    
-    #clockwise
-    if third >= second :
-        sum += abs(third-second)*degree
-    else:
-        sum += abs(40 -third +first)*degree
+    sum += ((initial - first + 40) % 40 + (second - first + 40) % 40 + (second - third + 40) % 40) * 9
 
     return sum
 
