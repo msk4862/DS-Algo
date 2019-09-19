@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 
 using namespace std;
 int main() {
@@ -8,7 +7,7 @@ int main() {
     while (cin>>t)
     {   
         int m, n;
-        cin >> m>>n;
+        cin>>m>>n;
         for (int i = 0; i < t; i++)
         {
             int x, y;
