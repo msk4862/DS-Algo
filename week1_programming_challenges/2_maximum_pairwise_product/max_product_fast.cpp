@@ -9,10 +9,10 @@ long long MaxPairwiseProduct_Fast(vector<int> v) {
 	
 	int n = v.size();
 
-	sort(v.begin(), v.end()); 
+	sort(v.begin(), v.end()); //sorting the elements of vector in non-decreasing order
 
 
-	return (long long)v[n-2]*v[n-1];
+	return (long long)v[n-2]*v[n-1]; //returing the product of last 2 numbers of the vector
 }
 
 int main()
