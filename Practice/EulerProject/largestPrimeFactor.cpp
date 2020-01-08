@@ -13,11 +13,10 @@ void findPrime() {
 
     ll num = 2;
     int k = 0;
-    while (ar_size--)
+    while (k < ar_size)
     {
-        again:
         isPrime = true;
-        for(ll i =2; i< sqrt(num); ++i) {
+        for(ll i =2; i<= sqrt(num); ++i) {
             if(num%i==0) {
                 isPrime = false;
                 break;           
@@ -26,11 +25,9 @@ void findPrime() {
         if (isPrime)
         {
             primes[k++] = num;
-            num++;
-        } else {
-            num++;
-            goto again;
         }
+
+        num++;
         
     }
     
