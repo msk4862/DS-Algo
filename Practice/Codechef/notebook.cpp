@@ -8,14 +8,15 @@ using namespace std;
 
 int main() {
     
-    ll t, x,k, y, n;
+    ll t, x,k, y, n, rem;
     cin>>t;
 
     while (t--) {
         cin>>x>>y>>k>>n;
 
-        ll rem = y-x;
+        rem = x-y;
         bool possible=false;
+        
 
         vector< vector<int> > det(n, vector<int> (2));
         for (int i = 0; i < n; i++)
@@ -24,7 +25,6 @@ int main() {
 
             if(rem <= det[i][0] && k >= det[i][1]) {
                 possible  = true;
-                break;
             }
         }
 
