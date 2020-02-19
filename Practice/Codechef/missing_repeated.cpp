@@ -31,7 +31,7 @@ int main() {
     cin>>t;
     while(t-- ) {
         cin>>n;
-        vector<ll> a(n);
+        vector<int> a(n);
 
         for (ll i = 0; i < n; i++)
         {
