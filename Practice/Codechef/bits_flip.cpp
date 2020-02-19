@@ -31,10 +31,14 @@ vector<int> flip(string A) {
         }
 
         if(cur_max < 0) {
+            cur_max = 0;
             start = i+1;
         }
 
         
+    }
+    if(res[0] == 0) {
+        res = {};
     }
     return res;
 
