@@ -103,7 +103,7 @@ void List::delete_node(int pos) {
         prev->next = cur->next;
         delete cur;
     }
-
+cout<<"";
 }
 
 void List:: print() {
