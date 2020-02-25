@@ -143,6 +143,12 @@ T list<T>::delete_last() {
 	}
 	
 	else {
+        if(head == tail) {
+            T i = head->data;
+            delete head;
+            head = tail = NULL;
+            return i;
+        }
 		node<T> *ptr = head;
 		while(ptr->next != tail) {
 			ptr = ptr->next;
@@ -160,7 +166,10 @@ T list<T>::delete_last() {
 
 template <typename T>
 T list<T>::delete_pos(int pos) {
-    
+    if(head == NULL) {
+        cout<<"UNDERFLOW!!!\n";
+        return -1;
+    }
     node<T> *pre = head;
     node<T> *cur = head;
     while (--pos) 
@@ -244,7 +253,7 @@ template <typename T>
 void list<T> ::serach_and_swap(T elem) {
 
     if(head == NULL || head == tail || head ->data == elem) {
-        cout<<"INVALID INPUT!!!\n";
+        cout<<"INVALID ELEMENT GIVEN!!!\n";
         return;
     } 
     //list has only two elements
@@ -252,6 +261,7 @@ void list<T> ::serach_and_swap(T elem) {
         tail->next = head;
         head = tail;
         tail = tail->next;
+        tail->next = NULL;
 
         return;
     }
@@ -299,9 +309,16 @@ void list<T> ::serach_and_swap(T elem) {
 
 template<typename T> 
 void list<T>:: print() {
+    
+    if(head == NULL) {
+        cout<<"LIST IS EMPTY!!!";
+        return;
+    }
+
     node<T> *ptr = head;
 
-    cout<<"Your List: ";
+
+    cout<<"\nYour List: ";
     while (ptr != NULL)
     {
         cout<<ptr->data<<" ";
@@ -314,35 +331,88 @@ void list<T>:: print() {
 
 
 int main() {
-    list<char> li;
+    list<int> li;
 
-    li.insert_first('a');
-    li.print();
-    li.insert_end('d');
-    li.print();
-    li.insert_pos('v', 2);
-    li.print();
+    int ch;
+
+    do {
+        cout<<"\n\n\n1. Insert an element at front\n";
+        cout<<"\n2. Insert an element at back\n";
+        cout<<"\n3. Insert an element at any position\n";
+        cout<<"\n4. Delete an element from front\n";
+        cout<<"\n5. Delete an element from back\n";
+        cout<<"\n6. Delete an element from any position\n";
+        cout<<"\n7. Reverse the list\n";
+        cout<<"\n8. Search and swap an element\n";
+        cout<<"\n9. Print the list\n";
+        cout<<"\nEnter -1 to EXIT\n";
+        cout<<"\nEnter your choice: \n";
+        
+        cin>>ch;
+
+        switch (ch)
+        {
+            int e, pos;
+        case 1:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            li.insert_first(e);
+            li.print();
+            break;
+        
+        case 2:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            li.insert_end(e);
+            li.print();
+            break;
+        
+        case 3:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            cout<<"\nEnter position: ";
+            cin>>pos;
+            li.insert_pos(e, pos);
+            li.print();
+            break;
+        
+        case 4:
+            li.delete_first();
+            li.print();
+            break;
+
+        case 5:
+            li.delete_last();
+            li.print();
+            break;
+
+        case 6:
+            cout<<"\nEnter position: ";
+            cin>>pos;
+            li.delete_pos(pos);
+            li.print();
+            break;
+        
+        case 7:
+            li.reverse();
+            li.print();
+            break;
+        case 8: 
+            cout<<"\nEnter the element to be searched: ";
+            cin>>e;
+            li.serach_and_swap(e);
+            li.print();
+            break;
+        
+        case 9:
+            li.print();
+            break;
+        
+        default:
+            cout<<"\nINVALID CHOICE!!!\n";
+        }
+    }while(ch != -1);
+    
 
     
-    li.insert_pos('k', 1);
-    li.print();
-
-    li.insert_pos('l', 3);
-    li.print();
-
-    li.delete_first();
-    li.print();
-
-
-    li.delete_pos(3);
-    li.print();
-
-    li.reverse();
-    li.print();
-
-    li.insert_pos('h', 2);
-    li.print();
-
-    li.serach_and_swap('a');
-    li.print();
 }
