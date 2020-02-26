@@ -19,102 +19,104 @@ class node {
 template <typename T>
 class clist{
     private:
-        node<T> *tail;
+        node<T> *cursor;
     
     public:
         clist() {
-            tail = NULL;
+            cursor = NULL;
         }
 
-    void insert_first(T data);
-    void insert_end(T data);
-    // void insert_pos(T data, int pos);
-
-    void delete_first();
-    void delete_last();
-    // T delete_pos(int pos);  
+    void add(T data);
+    void remove();
+    T front();
+    T back();
+    void advance();
 
     void print();
 
 };
 
 template <typename T>
-void clist<T>::insert_first(T data) {
-    node<T> *ptr = new node<T>(data);
-    if(tail == NULL) {
+T clist<T>::front() {
 
-        tail = ptr;
-        ptr->next = tail;
-
-        return;
-
-    } 
-
-    ptr->next = tail->next;
-    tail->next = ptr;
-
-}
-
-template <typename T>
-void clist<T>::insert_end(T data) {
-    node<T> *ptr = new node<T>(data);
-
-    if(tail == NULL) {
-        tail = ptr;
-        ptr->next = tail;
-
-        return;
-
-    } 
-
-    ptr->next = tail->next;
-    tail->next = ptr;
-    tail = ptr;
-
-}
-
-template <typename T>
-void clist<T>::delete_first() {
-
-    if(tail == NULL) {
+    if(cursor == NULL) {
         cout<<"UNDERFLOW!!!\n";
-        return;
+        return -1;
     } 
 
-    node<T> *ptr = tail->next;
-    tail->next = ptr->next;
-    
-    delete ptr;
+    return cursor->next->data;
 }
 
 template <typename T>
-void clist<T>::delete_last() {
+T clist<T>::back() {
 
-    if(tail == NULL) {
+    if(cursor == NULL) {
         cout<<"UNDERFLOW!!!\n";
+        return -1;
+    } 
+
+    return cursor->data;
+}
+
+template <typename T>
+void clist<T>::add(T data) {
+    node<T> *ptr = new node<T>(data);
+
+    if(cursor == NULL) {
+        cursor = ptr;
+        ptr->next = cursor;
         return;
     } 
 
-    node<T> *ptr = tail;
-    while (ptr->next != tail)
-    {
-        ptr = ptr->next;
+    ptr->next = cursor->next;
+    cursor->next = ptr;
+
+}
+
+template <typename T>
+void clist<T>::remove() {
+
+    if(cursor == NULL) {
+        cout<<"\nUNDERFLOW!!!";
+        return;
+
+    } 
+
+    //single element list
+    else if(cursor->next = cursor) {
+        cursor = NULL;
+        return;
     }
-    
-    node<T> *temp = tail;
-    ptr->next = tail->next;
-    tail = ptr;
 
-    delete temp;
+    node<T> *ptr = cursor->next;
+
+    cursor->next = ptr->next;
+
+    delete ptr;
+    return;
 }
 
+template <typename T>
+void clist<T>::advance() {
+
+    if(cursor == NULL) {
+        cout<<"UNDERFLOW!!!\n";
+        return;
+    } 
+
+    cursor = cursor->next;
+}
 
 template <typename T>
 void clist<T>::print() {
-    node<T> *ptr = tail->next;
+    if(cursor == NULL) {
+        cout<<"\nLIST IS EMPTY!!!";
+        return;
+    }
+    node<T> *ptr = cursor->next;
 
     cout<<"Your list: ";
-    while (ptr != tail)
+    while (ptr != cursor)
     {
         cout<<ptr->data<<" ";
         ptr = ptr->next; 
@@ -123,28 +125,68 @@ void clist<T>::print() {
     
 }
 
-int main() {
-    clist<int> li;
-    li.insert_first(1);
-    li.print();
-    
-    li.insert_first(2);
-    li.print();
 
-    li.insert_first(3);
-    li.print();
-    
-    li.insert_end(8);
-    li.print();
-    
-    
-    li.insert_end(5);
-    li.print();
-    
-    li.delete_first();
-    li.print();
-    
-    li.delete_last();
-    li.print();
+int main() {
+    clist<char> li;
+
+    int ch;
+
+    do {
+        cout<<"\n1. Get front\n";
+        cout<<"\n2. Get back\n";
+        cout<<"\n3. Add an element\n";
+        cout<<"\n4. Remove an element\n";
+        cout<<"\n5. Advance the cursor\n";
+        cout<<"\n6. Print the list\n";
+        cout<<"\n\nEnter anything else to EXIT\n";
+        cout<<"\nEnter your choice: \n";
+        
+        cin>>ch;
+
+        switch (ch)
+        {
+            char e;
+            int pos;
+        case 1:
+            e = li.front();
+            if(e != -1) {
+                cout<<"\nFRONT: "<<e<<endl;
+            }
+            break;
+        
+        case 2:
+            e = li.back();
+            if(e != -1) {
+                cout<<"\nBACK: "<<e<<endl;
+            }
+            break;
+        
+        case 3:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            li.add(e);
+            li.print();
+            break;
+        
+        case 4:
+            li.remove();
+            li.print();
+            break;
+
+        case 5:
+            li.advance();
+            li.print();
+            break;
+
+        case 6:
+            li.print();
+            break;
+        
+        default:
+            exit(0);
+        }
+        
+    }while(true);
+        
 }
 
