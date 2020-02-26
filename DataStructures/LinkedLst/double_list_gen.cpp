@@ -126,10 +126,56 @@ void dlist<T>::insert_pos(T data, int pos) {
 
 }
 
+template <typename T>
+T dlist<T>::delete_first() {
+    if(head == NULL ) {
+        cout<<"\nNOT ENOUGH ELEMENTS!!!\n";
+        return -1;
+    }
+    node<T>* ptr = head;
+    head = head->next;
+    
+    //if list is empty now
+    if(head != NULL) {
+        head->prev = NULL;
+    }
+
+    T i = ptr->data;
+    delete ptr;
+    return i;
+    
+}
+
+template <typename T>
+T dlist<T>::delete_last() {
+    if(head == NULL ) {
+        cout<<"\nNOT ENOUGH ELEMENTS!!!\n";
+        return -1;
+    }
+    node<T>* ptr = tail;
+    tail = tail->prev;
+    
+    //if list is empty now
+    if(tail != NULL) {
+        tail->next = NULL;
+    } else {
+        head = tail = NULL;
+    }
+
+    T i = ptr->data;
+    delete ptr;
+    return i;
+    
+}
+
 
 template <typename T>
 T dlist<T>::delete_pos(int pos) {
-    
+    if(head == NULL) {
+        cout<<"UNDERFLOW!!!\n";
+        return -1;
+    }
+
     node<T> *cur = head;
     while (--pos) 
     {   
@@ -139,9 +185,14 @@ T dlist<T>::delete_pos(int pos) {
         }
         cur = cur->next;
     }
+
+    //deleting element of single element list
+    if(cur == head && head == tail) {
+        head = tail = NULL;
+    }
     
     //deleting head element
-    if (cur == head) {
+    else if (cur == head) {
         head = head->next;
         head->prev = NULL;
     } 
@@ -196,6 +247,11 @@ void dlist<T> ::reverse() {
 
 template<typename T> 
 void dlist<T>:: print() {
+
+    if(head == NULL) {
+        cout<<"\nLIST IS EMPTY!!!";
+        return;
+    }
     node<T> *ptr = head;
 
     cout<<"Your List: ";
@@ -209,32 +265,85 @@ void dlist<T>:: print() {
     
 }
 
+
 int main() {
-    dlist<char> li;
+    dlist<int> li;
 
-    li.insert_first('a');
-    li.print();
-    li.insert_end('d');
-    li.print();
+    int ch;
+
+    do {
+        cout<<"\n\n\n1. Insert an element at front\n";
+        cout<<"\n2. Insert an element at back\n";
+        cout<<"\n3. Insert an element at any position\n";
+        cout<<"\n4. Delete an element from front\n";
+        cout<<"\n5. Delete an element from back\n";
+        cout<<"\n6. Delete an element from any position\n";
+        cout<<"\n7. Reverse the list\n";
+        cout<<"\n8. Print the list\n";
+        cout<<"\n\nEnter anything else to EXIT\n";
+        cout<<"\nEnter your choice: \n";
+        
+        cin>>ch;
+
+        switch (ch)
+        {
+            int e;
+            int pos;
+        case 1:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            li.insert_first(e);
+            li.print();
+            break;
+        
+        case 2:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            li.insert_end(e);
+            li.print();
+            break;
+        
+        case 3:
+            cout<<"\nEnter an element to be inserted: ";
+            cin>>e;
+            cout<<"\nEnter position: ";
+            cin>>pos;
+            li.insert_pos(e, pos);
+            li.print();
+            break;
+        
+        case 4:
+            li.delete_first();
+            li.print();
+            break;
+
+        case 5:
+            li.delete_last();
+            li.print();
+            break;
+
+        case 6:
+            cout<<"\nEnter position: ";
+            cin>>pos;
+            li.delete_pos(pos);
+            li.print();
+            break;
+        
+        case 7:
+            li.reverse();
+            li.print();
+            break;
+        
+        case 8:
+            li.print();
+            break;
+        
+        default:
+            exit(0);
+        }
+    }while(true);
     
-    
-    li.insert_end('o');
-    li.print();
-    
-    
-    li.insert_first('r');
-    li.print();
-    li.insert_pos('v', 5);
-    li.print();
 
     
-    li.insert_pos('k', 1);
-    li.print();
-
-    li.insert_pos('l', 3);
-    li.print();
-
-    li.delete_pos(3);
-    li.print();
-
 }
+
