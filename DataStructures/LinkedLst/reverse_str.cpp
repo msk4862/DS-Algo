@@ -16,6 +16,7 @@ string reverse(string str, string rev="") {
 
 int main() {
     string str;
+    cout<<"Enter string: ";
     cin>>str;
 
     cout<<reverse(str);
