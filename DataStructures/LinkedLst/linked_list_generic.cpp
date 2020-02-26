@@ -345,7 +345,7 @@ int main() {
         cout<<"\n7. Reverse the list\n";
         cout<<"\n8. Search and swap an element\n";
         cout<<"\n9. Print the list\n";
-        cout<<"\nEnter -1 to EXIT\n";
+        cout<<"\n\nEnter anything else to EXIT\n";
         cout<<"\nEnter your choice: \n";
         
         cin>>ch;
@@ -409,9 +409,9 @@ int main() {
             break;
         
         default:
-            cout<<"\nINVALID CHOICE!!!\n";
+            exit(0);
         }
-    }while(ch != -1);
+    }while(true);
     
 
     
