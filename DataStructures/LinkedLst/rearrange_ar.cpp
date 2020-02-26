@@ -28,9 +28,12 @@ void rearrange(int ar[], int l, int r) {
 
 int main() {
     int n;
+
+    cout<<"Enter size of the array: ";
     cin>>n;
 
     int ar[n];
+    cout<<"Enter array elements:\n";
     for (int i = 0; i < n; i++)
     {   
         cin>>ar[i];
