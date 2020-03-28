@@ -147,4 +147,7 @@ void btree<T>::inOrder(node<T>* node) {
 int main() {
     btree<int> t;
     cout<<t.isEmpty();
+
+    t.addRoot(2);
+    // t.expandExternal();
 }
