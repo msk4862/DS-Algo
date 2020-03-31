@@ -11,7 +11,7 @@ public:
 
     node(int data) {
         this->data = data;
-        this-> next = (node *) NULL;
+        this-> next = NULL;
         cout<<"Node of value "<<data<<" Created"<<endl;
 
     }
@@ -27,8 +27,8 @@ private:
 public:
     List() {
         cout<<"Empty list created"<<endl;
-        head = (node*) NULL;
-        rear = (node*) NULL;
+        head = NULL;
+        rear = NULL;
     }
 
     void insert_end(int data);
