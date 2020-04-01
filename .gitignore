@@ -2,3 +2,4 @@
 *.exe
 *.pdf
 .ipynb_checkpoints/
+.course_work/
