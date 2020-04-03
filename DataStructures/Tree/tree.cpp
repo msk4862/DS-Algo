@@ -34,7 +34,8 @@ class btree {
         int getSize();
         bool isEmpty();
         void addRoot(T data);
-        
+        node<T>* getRoot();
+
         void expandExternal(node<T>* n, T left, T right); 
         node<T>* removeAboveExternal(node<T>* n);
 
@@ -62,6 +63,13 @@ void btree<T>::addRoot(T data) {
     root = n;
     size += 1;
 }
+
+
+template <typename T>
+node<T>* btree<T>::getRoot() {
+    return root;
+}
+
 
 template <typename T>
 void btree<T>::expandExternal(node<T>* n, T left, T right) {
@@ -127,10 +135,10 @@ void btree<T>::postOrder(node<T>* node) {
     if(node == NULL) {
         return;
     } 
-    //traverse node
+    cout<<postOrder(node->left);
+    cout<<postOrder(node->right);
     cout<<node->data;
-    cout<<preOrder(node->left);
-    cout<<preOrder(node->right);
+
 }
 
 template <typename T>
@@ -138,10 +146,9 @@ void btree<T>::inOrder(node<T>* node) {
     if(node == NULL) {
         return;
     } 
-    //traverse node
+    inOrder(node->left);
     cout<<node->data;
-    cout<<preOrder(node->left);
-    cout<<preOrder(node->right);
+    inOrder(node->right);
 }
 
 int main() {
@@ -149,5 +156,6 @@ int main() {
     cout<<t.isEmpty();
 
     t.addRoot(2);
+    t.inOrder(t.getRoot());
     // t.expandExternal();
 }
