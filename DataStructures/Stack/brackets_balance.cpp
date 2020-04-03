@@ -15,7 +15,7 @@ int main() {
             expression.push(str[i]);
         else if(str[i] == ')' || str[i] == ']' || str[i]== '}') {
             if (expression.empty()) {
-                
+                //in closing
                 cout<<i<<"\n";
                 return 0;
             }
@@ -31,6 +31,6 @@ int main() {
     if(expression.empty()) {
         cout<<"Success\n";
     } else {
-        cout<<"Fail\n";
+        cout<<"1\n";
     }
 }   
