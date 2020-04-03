@@ -16,14 +16,14 @@ int main() {
         else if(str[i] == ')' || str[i] == ']' || str[i]== '}') {
             if (expression.empty()) {
                 //in closing
-                cout<<i<<"\n";
+                cout<<i+1<<"\n";
                 return 0;
             }
             char last = expression.top();
             if ((str[i] == ')' && last=='(') || (str[i]=='}' && last=='{') || (str[i]==']' && last=='['))
                 expression.pop();
             else {
-                cout<<i<<endl;
+                cout<<i+1<<endl;
                 return 0;
             }
         }
