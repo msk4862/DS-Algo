@@ -59,15 +59,11 @@ int main() {
 	cin>>size;
 
 	int *arr = new int[size];
-	for(int i=0;i<size;i++){
-		arr[i] = size-i;
-	}
 
-	cout<<"\ninput array :: ";
-	for(int i=0;i<size;i++){
-		cout<<arr[i]<<" ";
+	cout<<"\nInput your array: ";
+	for(int i=0;i<size;i++) {
+		cin>>arr[i];
 	}
-	cout<<endl;
 
 	HeapSort(arr,size);
 
