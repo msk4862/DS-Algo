@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long unsigned int
 
-int frequency[100001];
+int frequency[1000001];
 
 int main() {
     int t;
@@ -25,7 +25,7 @@ int main() {
             sum = sum%n;
             if(sum < 0) {
                 // handling negative remainders
-                sum += n;
+                sum = (sum+n)%n;
             }
             frequency[sum]++;
             
