@@ -1,3 +1,6 @@
+//function to find the merge point of two list
+
+/*
 int findMergeNode(Node* head1, Node* head2) {
     SinglyLinkedListNode* head_org1 = head1;
     SinglyLinkedListNode* head_org2 = head2;
@@ -29,3 +32,4 @@ int findMergeNode(Node* head1, Node* head2) {
     return head_org1->data;
 
 }
+*/
