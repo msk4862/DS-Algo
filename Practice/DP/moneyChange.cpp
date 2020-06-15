@@ -6,8 +6,8 @@ using namespace std;
     cin.tie(nullptr); \
     cout.tie(nullptr); \
 
-ll minMoneyChange(ll n, ll dp[]) {
-    if(n <= 0) {
+ll minMoneyChange(ll n, int t_coins, int coins[], ll dp[]) {
+    if(n == 0) {
         return 0;
     }
 
@@ -15,17 +15,26 @@ ll minMoneyChange(ll n, ll dp[]) {
         return dp[n];
     } 
 
-    ll c1, c2, c3;
-    c1 = c2 = c3 = INT_MAX;
-
-    c1 = minMoneyChange(n-1, dp);
-    if(n >= 3)
-        c2 = minMoneyChange(n-3, dp);
-    if(n >= 4)
-        c3 = minMoneyChange(n-4, dp);
-    ll ans = min(min(c1, c2), c3) + 1;
+    ll ans = INT_MAX, subprob;
+    for (int i = 0; i < t_coins; ++i) {
+    	if(n >= coins[i])
+    		subprob = minMoneyChange(n-coins[i], t_coins, coins, dp)+1;
+    		ans = min(ans, subprob);
+    }
     dp[n] = ans;
     return dp[n];
+
+    // for constant 3 no. of coins
+    // ll c1, c2, c3;
+    // c1 = c2 = c3 = INT_MAX;
+
+    // c1 = minMoneyChange(n-1, dp);
+    // if(n >= 3)
+    //     c2 = minMoneyChange(n-3, dp);
+    // if(n >= 4)
+    //     c3 = minMoneyChange(n-4, dp);
+    // ll ans = min(min(c1, c2), c3) + 1;
+    
 }
 
 ll minMoneyChangeBU(ll n) {
@@ -50,7 +59,6 @@ ll minMoneyChangeBU(ll n) {
     
 }
 
-// denomenations = 1, 3, 4
 int main() {
     int t;
     cin>>t;
@@ -59,8 +67,12 @@ int main() {
         cin>>n;
 
         ll dp[n+1] = {0};
-        // cout<<minMoneyChange(n, dp)<<"\n";
-        cout<<minMoneyChangeBU(n)<<"\n";
+        
+        int coins[] = {1, 7, 10};
+        int t_coins = sizeof(coins)/sizeof(coins[0]);
+
+        cout<<minMoneyChange(n, t_coins, coins, dp)<<"\n";
+        // cout<<minMoneyChangeBU(n)<<"\n";
     }
     return 0;
 }
