@@ -1,12 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long unsigned int
-// #define FASTIO \
-//     ios_base::sync_with_stdio(false); \
-//     cin.tie(nullptr); \
-//     cout.tie(nullptr); \
+#define FASTIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(nullptr); \
+    cout.tie(nullptr); \
 
-int minOprTD(ll n, int dp[]) {
+ll dp[1000000] = {0};
+set<ll> steps;
+
+int minOprTD(ll n) {
     //  Base case
     if(n<=1) {
         return 0;
@@ -18,17 +21,18 @@ int minOprTD(ll n, int dp[]) {
     }
 
     //rec case (if dp[n] is not known)
-    int m1, m2=INT_MAX, m3=INT_MAX;
-    m1 = minOprTD(n-1, dp);
+    ll m1, m2=INT_MAX, m3=INT_MAX;
+    m1 = minOprTD(n-1);
     if(n%2==0) {
-        m2 = minOprTD(n/2, dp);
+        m2 = minOprTD(n/2);
     }
     if(n%3==0) {
-        m3 = minOprTD(n/3, dp);
+        m3 = minOprTD(n/3);
     }
     
-    int ans = min(min(m1, m2), m3) +1;
+    ll ans = min(min(m1, m2), m3) +1;
     dp[n] = ans;
+    // cout<<ans<<" ";
     return dp[n];
 }
 
@@ -57,15 +61,37 @@ int minOprBU(ll n) {
 }
 
 int main() {
-    // FASTIO;
+    FASTIO;
     int t;
     cin>>t;
     while(t--) {
         ll n;
         cin>>n;
+        
+        // steps.clear();
+        cout<<minOprTD(n)<<"\n";
 
-        int dp[n] = {0};
-        cout<<minOprTD(n, dp);
+        cout<<n<<" ";
+        while(n != 1)
+        {  
+            ll op1, op2, op3;
+            op1 = op2 = op3 = INT_MAX;
+
+            op1 = dp[n-1];            
+            if(n%2 == 0) op2 = dp[n/2];
+            if(n%3 == 0) op2 = dp[n/3];
+
+            if(op1 < op2) 
+                if(op1 < op3) n-=1;
+                else n /=3;
+            else if(op2 < op3) n/=2;
+            else n/=3;
+
+            cout<<n<< " ";
+        }
+        
+        // for(auto e:steps) cout<<e<<" ";
+        cout<<"\n";
     }
 
     return 0;
