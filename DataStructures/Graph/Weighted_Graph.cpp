@@ -26,6 +26,8 @@ class Graph {
     }
 
     void printAdjacencyList() {
+
+        // iterate over all keys of map
         for (auto e: l)
         {
             cout<<"Vertex "<<e.first<<"-> ";
