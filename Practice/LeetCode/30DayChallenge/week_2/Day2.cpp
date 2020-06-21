@@ -1,3 +1,7 @@
+/*
+  Backspace String Compare
+*/
+
 class Solution {
 public:
     bool backspaceCompare(string S, string T) {
