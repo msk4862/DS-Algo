@@ -6,40 +6,42 @@ using namespace std;
     using Adjacency list
 */
 
+template <typename T>
 class Graph {
-    public:
-    int V;
-
+    
     // Adj list
     // "A" -> ("B", 20), ("c", 30), ("D", 46)
-    unordered_map<string, list<pair<string, int> > > l; 
-    Graph(int V) {
-        this->V = V;
-    }
-
-    // assuming biderectional edges
-    void addEdge(string v1, string v2, bool bider, int weight) {
-        l[v1].push_back(make_pair(v2, weight));
-        if(bider)
-            l[v2].push_back(make_pair(v1, weight));
-
-    }
-
-    void printAdjacencyList() {
-
-        // iterate over all keys of map
-        for (auto e: l)
-        {
-            cout<<"Vertex "<<e.first<<"-> ";
-            for(auto nbr : e.second) cout<<"("<<nbr.first<<", "<<nbr.second<<")"<<", ";
-            cout<<"\n";
+    unordered_map<T, list<pair<T, int> > > l; 
+    int V;
+    
+    public:
+        Graph(int V) {
+            this->V = V;
         }
-        
-    }
+
+        // assuming biderectional edges
+        void addEdge(T v1, T v2, bool bider, int weight) {
+            l[v1].push_back(make_pair(v2, weight));
+            if(bider)
+                l[v2].push_back(make_pair(v1, weight));
+
+        }
+
+        void printAdjacencyList() {
+
+            // iterate over all keys of map
+            for (auto e: l)
+            {
+                cout<<"Vertex "<<e.first<<"-> ";
+                for(auto nbr : e.second) cout<<"("<<nbr.first<<", "<<nbr.second<<")"<<", ";
+                cout<<"\n";
+            }
+            
+        }
 };
 
 int main() {
-    Graph g(4);
+    Graph<string> g(4);
 
     g.addEdge("A", "B", true, 40);
     g.addEdge("B", "C", true, 30);
