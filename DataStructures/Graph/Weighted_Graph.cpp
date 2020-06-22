@@ -12,13 +12,8 @@ class Graph {
     // Adj list
     // "A" -> ("B", 20), ("c", 30), ("D", 46)
     unordered_map<T, list<pair<T, int> > > l; 
-    int V;
     
     public:
-        Graph(int V) {
-            this->V = V;
-        }
-
         // assuming biderectional edges
         void addEdge(T v1, T v2, bool bider, int weight) {
             l[v1].push_back(make_pair(v2, weight));
@@ -41,7 +36,7 @@ class Graph {
 };
 
 int main() {
-    Graph<string> g(4);
+    Graph<string> g;
 
     g.addEdge("A", "B", true, 40);
     g.addEdge("B", "C", true, 30);

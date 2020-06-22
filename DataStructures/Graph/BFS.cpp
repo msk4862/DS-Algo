@@ -20,6 +20,10 @@ class Graph {
             while(!q.empty()) {
                 T v = q.front();
 
+                // remove currently visited vertex
+                cout<<v<<", ";
+                q.pop();
+
                 // tranverse neighbours of current node and push into queue and mark visited
                 for(auto nbr:l[v]) {
                     if(!visited[nbr]) {
@@ -27,10 +31,6 @@ class Graph {
                         visited[nbr] = true;
                     }
                 }
-
-                // remove currently visited vertex
-                cout<<v<<", ";
-                q.pop();
             } 
         }
 };
