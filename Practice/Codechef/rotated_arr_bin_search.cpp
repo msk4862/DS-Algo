@@ -7,6 +7,8 @@ int bin_search(vector<int> a, int key) {
 
     // array is divided into two sorted arrays
     while(start <= end) {
+
+        // mid will lie in 1st sorted arr or 2nd sorted arr
         int mid = (end-start)/2 + start;
 
         if(key == a[mid]) {
@@ -14,7 +16,7 @@ int bin_search(vector<int> a, int key) {
         }
 
         else if(a[start] <= a[mid]) {
-            // In first sorted array partiton
+            // In 1st sorted array partiton
             if(key > a[start] && key < a[mid]) {
                 end = mid-1;
             } else {
@@ -22,7 +24,7 @@ int bin_search(vector<int> a, int key) {
             }
         }
         else {
-            // In other half of sorted array partiton
+            // In 2nd sorted array partiton
             if(key > a[mid] && key < a[end]) {
                 end = mid+1;
             } else {
