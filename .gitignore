@@ -2,5 +2,6 @@
 *.exe.core
 *.exe
 *.pdf
+*.txt
 .ipynb_checkpoints/
 .course_work/
