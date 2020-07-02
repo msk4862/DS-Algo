@@ -1,5 +1,6 @@
 /*
   Subarray Sum Equals K
+  Using Brian Kernighan’s Algorithm
 
 */
 
