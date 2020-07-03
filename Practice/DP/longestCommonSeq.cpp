@@ -6,7 +6,7 @@ using namespace std;
     cin.tie(nullptr); \
     cout.tie(nullptr);
 
-int longest(string s1, string s2, int i, int j,int dp[][1000]) {
+int longest(string s1, string s2, int i, int j,int dp[][1001]) {
     if(i==-1 or j==-1) return 0;
 
     if(dp[i][j]!=-1) return dp[i][j];
