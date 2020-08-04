@@ -20,7 +20,6 @@ class Graph {
     void dfs(int v, bool visited[]) {
 
         visited[v] = 1;
-        cout<<v<<" "; 
         for (int ad:adj[v]) {   
             if(!visited[ad])
                 dfs(ad, visited);
@@ -37,6 +36,20 @@ class Graph {
         return 1;
     }
 
+    int connectedComp() {
+        bool visited[v+1] = {0};
+        int connectedNum= 0;
+
+        for (int i = 1; i <= v; i++) {
+            if(!visited[i]) {
+                connectedNum++;
+                dfs(i, visited);
+            }
+
+        }
+        return connectedNum;
+        
+    }
 };
 
 int main() {
@@ -50,5 +63,7 @@ int main() {
 
     if(g.isConnected()) cout<<"Graph is Connected";
     else cout<<"Graph is not connected";
+
+    cout<<"\nNo. of connected components: "<< g.connectedComp()<<"\n";
     
 }

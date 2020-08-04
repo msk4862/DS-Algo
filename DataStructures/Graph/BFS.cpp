@@ -3,7 +3,7 @@ using namespace std;
 
 template<typename T>
 class Graph {
-    map<T, list<T> > l;
+    unordered_map<T, list<T> > l;
 
     public:
         void addEdge(T s, T d) {
@@ -12,7 +12,7 @@ class Graph {
         }
         
         void bfs(T src) {
-            map<T, bool> visited;
+            unordered_map<T, bool> visited;
             queue<T> q;
 
             q.push(src);
