@@ -33,18 +33,20 @@ class Tree {
 
 int main() { 
 
-    Tree t(6);
+    int v = 7;
+    Tree t(v);
 
     t.addEdge(1, 2);
     t.addEdge(1, 3);
-    t.addEdge(2, 4);
+    t.addEdge(1, 4);
     t.addEdge(2, 5);
-    t.addEdge(5, 6);
+    t.addEdge(2, 6);
+    t.addEdge(4, 7);
     
-    int count[7] = {0};
+    int count[v+1] = {0};
     t.dfs(1, 0, count);
 
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= v; i++) {
         cout<<count[i]<<" ";
     }
 
