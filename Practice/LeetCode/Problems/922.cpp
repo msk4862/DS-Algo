@@ -9,15 +9,14 @@ public:
             else odd.push_back(A[i]);
         }
         
-        int k = 0;
-        for(int i = 0; i < A.size(); i+=2) {
-            res[i] = even[k++];
+        int o = 0, e=0;
+        for(int i = 0; i < A.size(); i++) {
+            if(i%2)
+                res[i] = odd[o++];
+            else
+                res[i] = even[e++];
         }
         
-        k = 0;
-        for(int i = 1; i < A.size(); i+=2) {
-            res[i] = (odd[k++]);
-        }
         return res;
         
     }
