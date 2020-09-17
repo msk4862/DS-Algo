@@ -18,6 +18,5 @@ public:
         }
         
         return res;
-        
     }
 };
