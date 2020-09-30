@@ -1,3 +1,7 @@
+/*
+    Probem link: https://leetcode.com/problems/target-sum/
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -6,6 +10,17 @@ using namespace std;
     cin.tie(nullptr); \
     cout.tie(nullptr);
 
+// pure recursive solution
+// int target_sum(int ar[], int sum, int n) {
+//     if(n==0 and sum==0)
+//         return 1;
+//     if(n==0 and sum!=0)
+//         return 0;
+
+//     return target_sum(ar, sum-ar[n-1], n-1) + target_sum(ar, sum+ar[n-1], n-1);
+    
+    
+// }
 
 
 ll count_subsets(ll a[], ll n, ll sum) {
@@ -27,29 +42,34 @@ ll count_subsets(ll a[], ll n, ll sum) {
                 dp[i][j] = dp[i-1][j];
         }
     }
-    
+
     return dp[n][sum];
 }
 
 void solve() {
-    ll n, diff;
-    cin>>n>>diff;
-
-    ll a[n], sum = 0;
+    ll target, n;
+    cin>>target>>n;
+    
+    ll a[n];
     for (int i = 0; i < n; i++) {
         cin>>a[i];
-        sum += a[i];
     }
 
-    // sum(s1)-sum(s2) = diff
-    // sum(a)-2sum(s2) = diff
-    ll target_sum = (sum-diff)/2;
-    cout<<count_subsets(a, n, target_sum);
+    // target = (all plus - all minus) 
+    int sum = accumulate(a, a+n, 0);
+    ll dif = (sum-target)/2 + target;
+    
+    // if diff is in decimals
+    if((target+sum)%2!=0 or sum < target) cout<<"0";
+
+    cout<<count_subsets(a, n, dif)<<" ";
+
     
 }
 
 int main() {
-    FASTIO;
+    FASTIO
     solve();
+    cout<<"\n";
     return 0;
 }
