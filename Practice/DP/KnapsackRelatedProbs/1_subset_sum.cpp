@@ -45,6 +45,16 @@ ll count_subsets(ll a[], ll n, ll sum) {
     for (int i = 1; i <= sum; i++) {
         dp[0][i] = 0;
     }
+    
+    // for sum=0 and zero elemnts present
+    for (int i = 1; i <= n; i++) {
+        if(a[i-1] == 0) {
+            // empty subset + zero element subset 
+            dp[i][0] = 2*dp[i-1][0];
+        }    
+        else 
+            dp[i][0] = dp[i-1][0];
+    }
 
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= sum; j++) {
