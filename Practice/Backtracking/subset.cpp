@@ -10,20 +10,34 @@ void subset(int a[], int n, vector<vector<int>>& res, int ind=0, vector<int> cur
 	res.push_back(cur);
 	for (int i = ind; i < n; i += 1) {
 		cur.push_back(a[i]);
-		subset(a, i+1, n, res, cur);
+		subset(a, n, res, i+1, cur);
 		cur.pop_back();
 	}
-	
 	return;
 	
 }
 
 void solve() { 
-	int n = 6;  
-	int a[] = {2,3,4,5,6,7};
+	int n;
+	cin>>n;  
+	int a[n];
+	for(int i =0; i < n;++i) {
+		cin>>a[i];
+	}
 	
 	vector<vector<int>> res;
 	subset(a, n, res);
+	
+	for(auto i: res) {
+		if(i.size() ==0) {
+			cout<<"null \n";
+			continue;
+		}
+		for(auto e: i){
+			cout<<e<<" ";
+		}
+		cout<<endl;
+	}
 }
 
 int main() {
