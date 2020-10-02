@@ -3,5 +3,6 @@
 *.exe
 *.pdf
 *.txt
+a.out
 .ipynb_checkpoints/
 .course_work/
