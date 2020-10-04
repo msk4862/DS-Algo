@@ -27,6 +27,11 @@
 
 * $1M = 10^6$
 
+
+### Arrays
+
+* deallocate dynamic array using -> `delete[]` operator, Its call destructor for every object(element) of array. 
+
 ### Bitwise Techniques
 
 * **bitset**<4> num=4
