@@ -28,9 +28,15 @@
 * $1M = 10^6$
 
 
-### Arrays
+### Array
 
 * deallocate dynamic array using -> `delete[]` operator, Its call destructor for every object(element) of array. 
+
+### Linked List
+
+* Arrays are faster to read but linked lists are **faster to write in between**.
+  > In arrays, If we want to insert or delete an element in between the array we have to shift all the following elements accordingly.
+  But in case of linked list we just need to move some pointers and thats it.
 
 ### Bitwise Techniques
 
