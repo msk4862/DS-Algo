@@ -16,6 +16,10 @@
 
 ![Asymptotic](asymptotic2.png)
 
+* **Master Theorem:** 
+![Master Theorem](master_theorem.png)
+
+
 ### Familiarity with these bounds: 
 
 * $2^{10} =1,024≈10^3$ <br>
@@ -69,6 +73,15 @@
 > https://www.programmersarmy.com/modular2.html
 
 **Division: (a/b)%m = (a*power(a,m-2))%m = ((a%m) * (x%m))%m**
+
+## Recursion
+
+* Recursion function also takes **stack space** for recursive function calling 
+### Backtracking
+
+* Backtracking is a sort of refined brute force.
+* Backtracking speeds the exhaustive search by **pruning**.
+* Soometimes, best algorithm for a problem is to try all possibilities
 
 ## Dynamic Programming
 
