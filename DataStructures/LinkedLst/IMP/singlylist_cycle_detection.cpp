@@ -1,3 +1,5 @@
+// other approach is Hashing with O(n) space complexity
+
 bool has_cycle(SinglyLinkedListNode* head) {
      if(head==nullptr) {
         return false;
