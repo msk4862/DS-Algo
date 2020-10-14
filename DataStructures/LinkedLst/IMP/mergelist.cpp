@@ -34,45 +34,38 @@ public:
 
     // iterative
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        ListNode* t1 = l1;
-        ListNode* t2 = l2;
         
         if(!t1) return t2;
         if(!t2) return t1;
         
-        ListNode* prev = nullptr;
+        // just one temp node
+        ListNode* res = new ListNode(0);
+        ListNode* t = res;
         
         // merging l2 into l1
         while(t1 && t2) {
-            if(t1->val == t2->val) {
-                t1->next = new ListNode(t2->val, t1->next);
-                
-                prev = t1->next;
-                t1 = t1->next->next;
-                t2 = t2->next;
-            } 
-            else if(t1->val < t2->val) {
-                prev = t1;
-                t1 = t1->next;
+            if(l1->val < l2->val) {
+                t->next = l1;
+                t=t->next;
+                l1 = l1->next;
             }
             else {
-                // if previous is null 
-                if(!prev) {
-                    l1 = prev = new ListNode(t2->val, t1); 
-                }
-                else {
-                    prev->next = new ListNode(t2->val, prev->next);
-                    prev = prev->next;
-                }
-                t2 = t2->next;
+            	t->next = l2;
+                t = t->next;
+                l2 = l2->next;
             }
         }
         
-        if(t2) {
-            prev->next = t2;
+        if(l1) {
+            t->next = l1;
         }
         
-        return l1;
+        if(l2) {
+            t->next = l2;
+        }
+        
+        // 1st elem is temp
+        return res->next;
     }
 
 
