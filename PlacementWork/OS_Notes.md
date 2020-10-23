@@ -33,6 +33,7 @@ An operating system acts as an intermediary between the user of a computer and c
 4. Job Scheduling
 5. Error detection and Handling
 
+
 # Multiprogramming, multitasking, multithreading and multiprocessing
 
 1. __Multi programming (Single CPU):__ 
@@ -58,3 +59,33 @@ An operating system acts as an intermediary between the user of a computer and c
     - each process is assigned some specific quantum of time for which a process is meant to execute. Say there are 4 processes P1, P2, P3, P4 ready to execute. So each of them are assigned some time quantum for which they will execute e.g time quantum of 5 nanoseconds (5 ns). As one process begins execution (say P2), it executes for that quantum of time (5 ns). After 5 ns the CPU starts the execution of the other process (say P3) for the specified quantum of time.
 
     - Here also basically a context switch is occurring but it is occurring so fast that the user is able to interact with each program separately while it is running.
+
+
+# Process Management
+
+| Program  | Process |
+| - | - |
+| Program is written by a user. | A process is a program in execution. |
+| Program is a `passive` entity | A process is an `active` entity |
+| single program can create many processes when run multiple times | which is not the case of a process |
+
+Example: when we write a program in C or C++ and compile it, the compiler creates binary code. The original code and binary code are both `programs`. When we actually **run the binary code**, it becomes a `process`.
+
+### Process in memory: 
+![Process](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/06/process.png)
+
+__Context Switching:__ 
+- Switching of CPU to another process means saving the state of old process and loading saved state for new process.
+
+- In Context Switching the process is stored in the Process Control Block to serve the new process,so that old process can be resumed from the same part it was left.
+
+- To make context switching time to be less, registers which are the fastest access memory are used.
+
+- Information to be stored for context switching in PCB is:-
+    1. Program counter 
+    2. Scheduling information 
+    3. Changed state 
+    4. Accounting Information 
+    5. Base and Limit regsiter
+
+
