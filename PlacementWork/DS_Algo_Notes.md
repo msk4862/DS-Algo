@@ -1,3 +1,19 @@
+## Pointers
+
+```
+	int x = 10;
+	cout<<&10;	// works
+	
+	char ch = 'a';
+	cout<<&ch;	// print 'a' only not the address 
+	// because `cout<<` just print the value not the address of char type   
+```
+To avoid this:
+```
+cout<<(void *) &ch;	// using explicit type cast
+// now `cout<<` don't know the real type of `ch`
+```
+
 ## Algorithm Analysis
 
 ### Basic time and space complexity analysis:
