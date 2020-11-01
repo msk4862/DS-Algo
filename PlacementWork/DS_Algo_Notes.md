@@ -14,6 +14,20 @@ cout<<(void *) &ch;	// using explicit type cast
 // now `cout<<` don't know the real type of `ch`
 ```
 
+- Array pointer
+```
+int a[10];
+int *p;
+
+p = a;	// legal
+a = p;	// illegal
+
+//also
+p++;	// legal
+a++;	// illegal
+```
+
+
 ## Algorithm Analysis
 
 ### Basic time and space complexity analysis:
