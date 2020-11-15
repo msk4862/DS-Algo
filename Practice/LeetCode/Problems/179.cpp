@@ -4,7 +4,8 @@ public:
         string sa = to_string(a);
         string sb = to_string(b);
         
-        if(sa.size() == sb.size()) return sa > sb;
+        // not required
+        // if(sa.size() == sb.size()) return sa > sb;
         // concat
         return sa + sb > sb + sa ;
     }
