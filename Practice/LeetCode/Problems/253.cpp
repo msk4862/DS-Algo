@@ -13,20 +13,23 @@ public:
         // min heap to get earliest time room available
         priority_queue<int, vector<int>, greater<int>> room; 
         
-        room.insert(intervals[0][1]);
+    	room.push(intervals[0][1]);
         
-        int roomNum = 0;
-        // hit bow at where ballon ends
+        int roomNum = 1;
         for(int i=1; i < intervals.size(); ++i) {
+            
+         	// no room can accomodate -> another room needed
+         	if(intervals[i][0] < room.top()) {
+         		roomNum++;
+      			room.push(intervals[i][1]);
+         	}
          	// accomodate meeting in same room
-         	if(intervals[i][0] <= room.top()) {
+         	else {
+         		room.pop();
          		room.push(intervals[i][1]);
          	}
-         	else {
-         		roomNum++;
-         	}
-        }
+        }	
         
-        return roomNums;
+        return roomNum;
     }
 };
