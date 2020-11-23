@@ -34,7 +34,7 @@ void solve() {
 	// now both a and b are separated in diff partitions
 	//	now just find unique num in separeted partitions
 	for (int i = 0; i < n; i += 1) {
-		if(nums[i] & (1<<set_bit_no)) 
+		if(nums[i] & set_bit_no) 
 			num1 ^= nums[i];
 		else
 			num2 ^= nums[i];
