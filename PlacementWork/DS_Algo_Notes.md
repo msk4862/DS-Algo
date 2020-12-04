@@ -92,6 +92,10 @@ a++;	// illegal
     * `while(n>0) n&=(n-1)`, **Time Complexity: O(no. of set bits)**
     * `__builtin_popcount(n)`
 
+* find **rightmost set** bit: 
+	1) set_bit = x & ~(x-1) 
+	2) set_bit = (x & (x-1))^x	(using above point concept (Number of set bits))
+	
 ## Modular Arithmatic
 
 * Addition: (a+b)%m = ((a%m) + (b%m))%m
