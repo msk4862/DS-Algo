@@ -18,5 +18,25 @@ public:
         
         
         return -1;
+        
+        
+        // O(sqrt(n)), space O(1)
+        // first half
+        for(int i = 1; i <= sqrt(n); ++i) {
+            if(n%i == 0) {
+                if(k==1) return i;
+                k--;
+            }
+        }
+        
+        // second half of factors
+        for(int i = (int)sqrt(n); i >= 1; --i) {
+            if(n%i == 0) {
+                if(k==1) return n/i;
+                k--;
+            }
+        }
+        return -1;
+        
     }
 };
