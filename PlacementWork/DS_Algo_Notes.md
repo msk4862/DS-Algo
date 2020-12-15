@@ -1,3 +1,6 @@
+## OOP
+	-[Dynamic Binding - (virtual functions)](https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/)
+
 ## Pointers
 
 ```
@@ -123,7 +126,7 @@ a++;	// illegal
     - Choices (It means recursive)
     - Optimal Substructure (max, min largest,etc.)
 
-- Approach: Recusrsive (Use choice diagram) -> Memoisation -> Bottom Up
+- Approach: Recursive (Use choice diagram) -> Memoisation -> Bottom Up
 
 
 
