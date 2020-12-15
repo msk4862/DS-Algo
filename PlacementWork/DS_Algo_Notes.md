@@ -1,6 +1,13 @@
 ## OOP
 	-[Dynamic Binding - (virtual functions)](https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/)
+	
+	- Application of Runtime polymorphism:
+		
+		Let the code has a simple base class Employee , the class contains virtual functions like raiseSalary(), transfer(), promote(), etc. 			Different types of employees like Manager, Engineer, etc. may have their own implementations of the virtual functions present in base 			class Employee. 
+		In our complete software, we just need to pass a list of employees everywhere and call appropriate functions without even knowing the 			type of employee. For example, we can easily raise the salary of all employees by iterating through the list of employees. Every type of 			employee may have its own logic in its class, but we don’t need to worry about them because if raiseSalary() is present for a specific 			employee type, only that function would be called.
 
+	
+	
 ## Pointers
 
 ```
