@@ -25,14 +25,14 @@ vector<int> maxAllSubarray(int arr[], int n, int k) {
 		res.push_back(arr[maxEl.front()]);
 		
 		// shrink from front 
-		// if window has moved 	
+		// window have been moved 	
 		while(!maxEl.empty() && maxEl.front() < i-(k-1)) {
 			maxEl.pop_front();
 		}
 		
 		// extend from back
-		// remove less values	
-		while(!maxEl.empty() && arr[maxEl.back()] < arr[end]) {
+		// remove less values from back	
+		while(!maxEl.empty() && arr[maxEl.back()] <= arr[end]) {
 			maxEl.pop_back();
 		}
 		maxEl.push_back(end);
