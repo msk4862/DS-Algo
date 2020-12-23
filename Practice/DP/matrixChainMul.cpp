@@ -29,6 +29,15 @@ int getMinMultOprTD(int mat[], int open, int  close) {
     return cost[open][close];
 }
 
+void printTable(int cost[][100], int n) {	
+	
+	for(int i = 0; i < n; ++i) {
+		for(int j = 0; j < n; ++j) {
+			cout<<cost[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
 
 int getMinMultOprBU(int mat[], int n) {
    int cost[n][n]; 
@@ -45,6 +54,14 @@ int getMinMultOprBU(int mat[], int n) {
   		for (int bracket = start; bracket < end; bracket += 1) {
   			 int curOprs = cost[start][bracket] + cost[bracket+1][end] + mat[start-1]*mat[bracket]*mat[end];
   		     cost[start][end] = min(cost[start][end], curOprs);
+  		     
+  		     //printTable(cost, n);
+  		     for(int i = 0; i < n; ++i) {
+				for(int j = 0; j < n; ++j) {
+					cout<<cost[i][j]<<" ";
+				}
+				cout<<endl;
+			}
   		}
   	}
   }
