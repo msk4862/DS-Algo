@@ -88,6 +88,14 @@ a++;	// illegal
   > In arrays, If we want to insert or delete an element in between the array we have to shift all the following elements accordingly.
   But in case of linked list we just need to move some pointers and thats it.
 
+
+
+### Heap
+
+* Complete binary trees (CBT).
+  > All levels are complete except for the last level.
+    Last level can be complete or partially complete **filled from left to right.**
+
 ### Bitwise Techniques
 
 * **bitset**<4> num=4
