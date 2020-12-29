@@ -1,6 +1,6 @@
 ## OOP
 	
-## Runtime Polymorphism
+### Runtime Polymorphism
 
 - [Dynamic Binding - (virtual functions)](https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/)
 
