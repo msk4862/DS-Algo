@@ -96,6 +96,30 @@ a++;	// illegal
   > All levels are complete except for the last level.
     Last level can be complete or partially complete **filled from left to right.**
 
+* STL:
+	> Priority queue of integers
+	- priority_queue<int> pq; 							 (max heap by default)
+	- priority_queue<int, vector<int>, greater<int>> pq; (min heap by using **inbuilt** keyword `greater`)
+	- <code>
+		class Comparator {
+			public:
+				// `()` operator overloading
+				bool operator()(int a, int b) {
+					// max heap
+					return a < b;
+				}
+		};
+		
+		comparator c;
+		c();	
+		// will invoke overloaded function
+		// that is how object `c` is behaving like function
+	  </code>
+	
+	  priority_queue<int, vector<int>, Comparator>		(min heap by using **custom** comparator called **functors**-Objects behaving like objects)
+	  
+	  
+	
 ### Bitwise Techniques
 
 * **bitset**<4> num=4
