@@ -95,7 +95,8 @@ a++;	// illegal
 * Complete binary trees (CBT).
   > All levels are complete except for the last level.
     Last level can be complete or partially complete **filled from left to right.**
-
+* Head has total of **ceil(n/2)** Leaf nodes.
+* In a Min Heap, large elements lies in leaf vice versa in Max Heap. 
 * STL:
 	> Priority queue of integers
 	- priority_queue<int> pq; 							 (max heap by default)
@@ -115,11 +116,15 @@ a++;	// illegal
 		// will invoke overloaded function
 		// that is how object `c` is behaving like function
 	  ```
-	
 	  priority_queue<int, vector<int>, Comparator>		(min heap by using **custom** comparator called **functors**-Objects behaving like objects)
 	  
-	  
-	
+### Hashing
+
+* Load factor = current_values_filled/total_table_size 
+ > If load factor >= 0.7 that means 70% of hash table is filled. And then we perform **Rehashing** to avoid large no. of collisions.
+   In Rehashing we double the size of hash table and rehash the values in that table. 
+   It decreases the collisions as well as the time for insertion and deletion as size of chain(in case of separate chaining method) will decrease
+
 ### Bitwise Techniques
 
 * **bitset**<4> num=4
