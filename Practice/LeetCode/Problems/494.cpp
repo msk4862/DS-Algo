@@ -1,54 +1,38 @@
 class Solution {
 public:
-    
-int count_subsets(vector<int> a, int n, int sum) {
-
-        int dp[n+1][sum+1];
-
-        for (int i = 0; i <= n; i++) {
-            dp[i][0] = 1;
-        }
-        for (int i = 1; i <= sum; i++) {
-            dp[0][i] = 0;
-        }
-    
-        // for sum=0 and zero elemnts present
-        for (int i = 1; i <= n; i++) {
-            if(a[i-1] == 0) {
-                // empty subset + zero element subset 
-                dp[i][0] = 2*dp[i-1][0];
-            }    
-            else 
-                dp[i][0] = dp[i-1][0];
-        }
-
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= sum; j++) {
-                
-                if(a[i-1] <= j)
-                    dp[i][j] = (dp[i-1][j-a[i-1]] + dp[i-1][j]);
-                else
-                    dp[i][j] = dp[i-1][j];
-
-            }
-        }
-    
-
-        return dp[n][sum];
+    // brute force recursive approach
+    int target_td(vector<int>& nums, int n, int S) {
+        if(n == 0 && S == 0) return 1;
+        if(n == 0 && S != 0) return 0;
+        
+        return target_td(nums, n-1, S-nums[n-1]) + target_td(nums, n-1, S+nums[n-1]);
     }
 
     
-    int findTargetSumWays(vector<int>& nums, int S) {
+    int count_subsets(vector<int>& nums, int S) {
         int n = nums.size();
+        int dp[n+1][S+1];
+    
+        for(int i = 0; i <= n; ++i) {
+            for(int j = 0; j <= S; ++j) {
+                if(i == 0 && j == 0) dp[i][j] = 1;
+        		// if sum>0 and a={}, then its not possible
+            	else if (i == 0 && j != 0) dp[i][j] = 0;
+                else if(j >= nums[i-1]) dp[i][j] = dp[i-1][j] + dp[i-1][j - nums[i-1]];
+                else dp[i][j] = dp[i-1][j];
+            }
+        }
         
-        // target = (all plus - all minus) 
-        int sum = accumulate(nums.begin(), nums.end(), 0);
-        int dif = (sum-S)/2 + S;
+        return dp[n][S];
+    }
+    
+    int findTargetSumWays(vector<int>& nums, int S) {
+        long sum = accumulate(nums.begin(), nums.end(), 0);
         
-        long s= (long)S+sum;
+        int subset_sum = (sum - S)/2 + S;
         
-        // if diff is in decimals
-        if(s%2!=0 or sum < S) return 0;
-        return count_subsets(nums, n, dif);
+        // edge cases
+        if(S > sum || long(sum + S) & 1) return 0;
+        return count_subsets(nums, subset_sum);
     }
 };
