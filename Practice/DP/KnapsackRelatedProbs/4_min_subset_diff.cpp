@@ -1,3 +1,8 @@
+/*
+Given a set of integers, the task is to divide it into two sets S1 and S2 
+such that the absolute difference between their sums is minimum.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int

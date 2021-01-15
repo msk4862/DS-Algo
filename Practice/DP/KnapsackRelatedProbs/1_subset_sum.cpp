@@ -1,3 +1,7 @@
+/* Given a set of non-negative integers, and a value sum, determine if there is a subset of 
+the given set with sum equal to given sum. 
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -36,29 +40,13 @@ bool is_subset_sum(ll a[], ll n, ll sum) {
 ll count_subsets(ll a[], ll n, ll sum) {
 
     ll dp[n+1][sum+1];
-
-    // if sum == 0, then its always possible
-    for (int i = 0; i <= n; i++) {
-        dp[i][0] = 1;
-    }
-    // if sum>0 and a={}, then its not possible
-    for (int i = 1; i <= sum; i++) {
-        dp[0][i] = 0;
-    }
     
-    // for sum=0 and zero elemnts present
-    for (int i = 1; i <= n; i++) {
-        if(a[i-1] == 0) {
-            // empty subset + zero element subset 
-            dp[i][0] = 2*dp[i-1][0];
-        }    
-        else 
-            dp[i][0] = dp[i-1][0];
-    }
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= sum; j++) {
-            if(a[i-1] <= j)
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j <= sum; j++) {
+        	if(i == 0 && j == 0) dp[i][j] = 1;
+    		// if sum>0 and a={}, then its not possible
+        	else if (i == 0 && j != 0) dp[i][j] = 0;
+            else if(a[i-1] <= j)
                 dp[i][j] = (dp[i-1][j-a[i-1]] + dp[i-1][j]);
             else
                 dp[i][j] = dp[i-1][j];
