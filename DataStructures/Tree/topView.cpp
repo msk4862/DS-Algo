@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 
+// do such (view) questions using tree to 2-d place coordinate system mapping
+// with root as (0,0), down the tree: +y, left the root: -x, right the tree: +x 
+
 void getVerticalOrder(Node* root, int hd, int l, map<int, pair<int, int>> &hd_map) {
         if(root == nullptr) return;
 
