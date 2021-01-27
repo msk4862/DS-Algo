@@ -10,14 +10,26 @@
  * };
  */
 class Solution {
-unordered_map<int, bool> m;
-    public:
+public:
     
-    bool findTarget(TreeNode* root, int k) {
+    bool findTargetHelper1(TreeNode* root, int  k, unordered_map<int, bool> &mp) {
         if(!root) return false;
         
-        if(m[k-root->val]) return true;
-        m[root->val] =1;
-        return findTarget(root->left, k) or findTarget(root->right, k);
+        if(mp[k-root->val]) return true;
+        
+        mp[root->val] = true;
+        return findTargetHelper1(root->left, k, mp) || findTargetHelper1(root->right, k, mp);
+    }
+    
+    bool findTarget(TreeNode* root, int k) {
+        // 1st approach
+        // O(n), O(n)
+        unordered_map<int, bool> mp;
+        return findTargetHelper1(root, k, mp); 
+        
+        // 2nd approach
+        // do inorder traversal and store result in array
+        // now problem is reduced to finding two sum in sorted array 
+        // O(n), O(n)
     }
 };
