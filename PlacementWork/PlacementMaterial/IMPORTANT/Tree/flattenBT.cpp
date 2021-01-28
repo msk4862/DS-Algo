@@ -54,7 +54,6 @@ public:
             return {root, left.second};
         }
                 
-        
         // if both left and right subtree exist
         auto left = flattenH1(root->left);
         auto right = flattenH1(root->right);
