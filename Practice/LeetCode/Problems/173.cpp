@@ -16,24 +16,32 @@ public:
         pushAllLeft(root);
     }
     
+    // O(h) but O(n) in worst case (if tree is skewed)
+    void pushAllLeft(TreeNode* root) {
+        if(!root) return;
+        while(root) {
+            num.push(root);
+            root = root->left;
+        }
+    }
+    
+    /* next function can be called n times at most, and the number of right nodes in pushAllLeft(cur->right) 
+    function is maximal n in a tree which has n nodes, so the amortized time complexity is O(1).
+    */
+    
     /** @return the next smallest number */
     int next() {
-        TreeNode* t = num.top();
+        TreeNode* cur = num.top();
         num.pop();
+        
         // storing left of all right subtree
-        pushAllLeft(t->right);
-        return t->val;
+        pushAllLeft(cur->right);
+        return cur->val;
     }
     
     /** @return whether we have a next smallest number */
     bool hasNext() {
         return !num.empty();
-    }
-    
-    void pushAllLeft(TreeNode* root) {
-        if(!root) return;
-        num.push(root);
-        pushAllLeft(root->left);
     }
 };
 
