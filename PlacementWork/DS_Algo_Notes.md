@@ -48,11 +48,16 @@ a++;	// illegal
 
 ### Basic time and space complexity analysis:
 
-*  - We use **Big O** notation to show **worst case** complexity.
-   - **Omega(&omega;)** for **best time** complexity
-   - **Theta (&theta;)** when both worst and best time complexity **are equal**.
+*  - We use **Big O** notation to show **Upper Bound** complexity.
+   - **Omega(&omega;)** for **Lower Bound** complexity.
+   - **Theta (&theta;)** decides whether upper and lower bounds are same.
 *  An algorithm with k-nested loops of about n iterations each has $O(n^k)$ complexity
+
+*  We generally focus on the **upper bound** (O) because knowing the lower bound (Ω) of an algorithm is of no 
+   practical importance.
+   
 *  If your algorithm is recursive with b recursive calls per level and has L levels, the algorithm has roughly $O(b^L)$ complexity, but this is a only a rough upper bound. The actual complexity depends on what actions are done per level and whether pruning is possible. 
+
 *  A Dynamic Programming algorithm or other iterative routine which processes a 2D n×n matrix in $O(k)$ per cell runs in $O(k ×n^2)$ time.
 
 - $`c`$ ≪ $`loglogn`$ ≪ $log^an$ ≪ $n$ << $nlogn$ << $n^b$ ≪ $c^n$ ≪ $n!$ ≪ $n^n$     [n→∞, and fixed a>0,b>1,c>1 and any real d]
