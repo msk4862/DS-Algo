@@ -20,7 +20,7 @@ class Graph {
             while(!q.empty()) {
                 T v = q.front();
 
-                // remove currently visited vertex
+                // remove currently visited vertex from queue
                 cout<<v<<", ";
                 q.pop();
 
