@@ -35,6 +35,7 @@ class Graph {
             vector<bool> visited(V, false);
             // if its in current path
             // for cases like 1->2<-3
+            // we are coming to 2 from different paths 
             vector<bool> in_stack(V, false);
             
             for(int i = 0; i < V; ++i) {

@@ -17,27 +17,28 @@ class Graph {
         adj[v].push_back(u);
     }
 
-    bool dfs(int v, bool visited[], bool color[], bool pre=0) {
-        visited[v] = 1;
-        color[v] = pre?0:1;
-
-        for(int ad:adj[v]) {
-            if(!visited[ad])
-               return dfs(ad, visited, color, color[v]);
-            else
-                if(color[v] == color[ad]) 
-                    return false;
+    bool dfs(vector<vector<int>>& graph, int src, vector<int> &color, bool preColor = 1) {
+        
+        color[src] = preColor ? 1 : 2;
+        for(int adj : graph[src]) {
+            if(!color[adj]) {
+                if(!dfs(graph, adj, color, !preColor)) return false;
+            }
+            else if(color[adj] == color[src]) return false;
         }
-
+        
         return true;
     }
-
-    bool isBipartite() {
-        bool visited[v+1];
-        bool color[v+1];
-
-        return dfs(1, visited, color);
-
+    
+    bool isBipartite(vector<vector<int>>& graph) {
+        int n = graph.size();
+        vector<int> color(n, 0);
+        
+        for(int i = 0; i < n; ++i)
+            if(!color[i])
+                if(!dfs(graph, i, color)) return false;
+        
+        return true;
     }
 };
 
