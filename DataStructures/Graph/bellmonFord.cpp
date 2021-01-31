@@ -18,38 +18,23 @@ class Graph {
 
         void addEdge(int a, int b, int w) {
             adj[a].push_back({b, w});
-            adj[b].push_back({a, w});
-
         }
 
-        vector<int> dijkstra(int s) {
-            vector<int> distance(n+1, INT_MAX);
-            distance[s] = 0;
-            
-            queue<int> q;
-            q.push(s);
+        vector<int> bellmonFordSS(int src) {
+            vector<int> dist(n, INT_MAX); 
 
-            bool traversed[n+1] = {0};
-            while(!q.empty()) {
-                int cur = q.front();
-                q.pop();
+            dist[src] = 0;
+            for (int i = 0; i < n-1; ++i) {
+                for (int u = 0; u < n; ++u) {
+                    for(auto ad : adj[u]) {
+                        int v = ad.first;
+                        int w = ad.second;
 
-                if(traversed[cur]) continue;
-
-                for(auto ad: adj[cur]) {
-                    int neigh = ad.first;
-                    int w = ad.second;
-                    if(distance[neigh] > distance[cur] + w ) {
-                        q.push(neigh);
-                        distance[neigh] = distance[cur] + w;
+                        if(dist[u] != INT_MAX && dist[u] + w < dist[v]) dist[v] = dist[u] + w;
                     }
                 }
-
-                traversed[cur] = 1; 
-
             }
-
-            return distance;
+            return dist;
         }
 };
 
@@ -74,9 +59,10 @@ int main() {
     g.addEdge(5, 4, 10);
 
 
-    vector<int> d = g.dijkstra(0);
+    vector<int> d = g.bellmonFordSS(0);
 
     for(int i = 0; i < 9; ++i) cout<<d[i]<<" ";
+    cout<<endl;
 
     return 0;
 }
