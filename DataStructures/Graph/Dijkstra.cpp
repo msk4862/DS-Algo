@@ -5,6 +5,7 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr); \
     cout.tie(nullptr);
+typedef pair<int, int> pi; 
 
 class Graph {
     int n;
@@ -22,30 +23,46 @@ class Graph {
 
         }
 
+        /*
+        Time Complexity: The time complexity of the above code/algorithm looks O(V^2) as there are two nested 
+        loops. If we take a closer look, we can observe that the statements in inner loop are executed O(V+E) times 
+        (similar to BFS). The inner loop has decreaseKey() operation which takes O(LogV) time. So overall time complexity 
+        is O(E+V)*O(LogV) which is O((E+V)*LogV) = O(ELogV) 
+        */
+
         vector<int> dijkstra(int s) {
             vector<int> distance(n+1, INT_MAX);
-            distance[s] = 0;
-            
-            queue<int> q;
-            q.push(s);
-
             bool traversed[n+1] = {0};
-            while(!q.empty()) {
-                int cur = q.front();
-                q.pop();
+            
+            // dist, node
+            // priority based on dist
+            priority_queue<pi, vector<pi>, greater<pi>> minHp;
+            
+            distance[s] = 0;
+            minHp.push({0, s});
+
+            while(!minHp.empty()) {
+                // extract min
+                auto minNode = minHp.top();
+                int cur_dist = minNode.first;
+                int cur = minNode.second;
+
+                minHp.pop();
 
                 if(traversed[cur]) continue;
 
+                traversed[cur] = 1; 
                 for(auto ad: adj[cur]) {
                     int neigh = ad.first;
                     int w = ad.second;
+
+                    // relaxation
                     if(distance[neigh] > distance[cur] + w ) {
-                        q.push(neigh);
                         distance[neigh] = distance[cur] + w;
+
+                        minHp.push({distance[neigh], neigh});
                     }
                 }
-
-                traversed[cur] = 1; 
 
             }
 
@@ -76,6 +93,7 @@ int main() {
 
     vector<int> d = g.dijkstra(0);
 
+    cout<<endl;
     for(int i = 0; i < 9; ++i) cout<<d[i]<<" ";
 
     return 0;
