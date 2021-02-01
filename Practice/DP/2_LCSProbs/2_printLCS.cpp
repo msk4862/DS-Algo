@@ -6,7 +6,7 @@ using namespace std;
     cin.tie(nullptr); \
     cout.tie(nullptr);
 
-string print_lca_bu(string s1, string s2) {
+string print_lcs_bu(string s1, string s2) {
 	int n1 = s1.size(), n2 = s2.size();
 
 	
@@ -45,7 +45,7 @@ int main() {
     string s1, s2;
     cin>>s1>>s2;
 
-    cout<<print_lca_bu(s1, s2)<<"\n";
+    cout<<print_lcs_bu(s1, s2)<<"\n";
 
     return 0;
 }
