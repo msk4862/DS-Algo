@@ -7,6 +7,7 @@ using namespace std;
     cout.tie(nullptr);
 
 
+// using lcs taking reverse of string as second string
 int lcs_bu(string s1, string s2) {
 	int n1 = s1.size(), n2 = s2.size();
 
@@ -57,11 +58,11 @@ int lps_bu(string s) {
     return dp[0][n-1];
 }
 
+// driver code
 int longestPalindSeq(string s) {
     if(s.size() == 0) return 0;
 
     // 1st approach - Using LCS
-
     // we match palindrome by checking starting chars with ending chars
     // longest palindromic subsequence will just be lcs of string and its reverse (for finding palindrome) 
 
