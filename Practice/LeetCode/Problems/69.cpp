@@ -14,6 +14,7 @@ public:
         return i-1;
     }
     
+    // O(logn)
     int sqrt2(int x) {
         int l = 1, h = x;
         while(l <= h) {
