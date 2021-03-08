@@ -36,13 +36,17 @@ int kthElement1(vector<int>& nums1, vector<int>& nums2, int k) {
 	return -1;
 }
 
+
 int countLessNums(vector<int>& nums1, vector<int>& nums2, int val) {
 	/*
 		Returns values that are equal or smaller than val
 	*/
 	
 	int count  =0;
+
+	//O(log(m))
 	count += upper_bound(nums1.begin(), nums1.end(), val) - nums1.begin();
+	//O(log(n))
 	count += upper_bound(nums2.begin(), nums2.end(), val) - nums2.begin();
 
 	return count;
@@ -68,9 +72,12 @@ int kthElement2(vector<int>& nums1, vector<int>& nums2, int k) {
 		maxV = nums2[n2-1];
 	}
 
+
+	// value of maxV in worst case will 2^32 - 1 => log(2^32) = 32
 	while(minV <= maxV) {
 		int mid = (maxV-minV)/2 + minV;
 
+		//O(log(n)) + O(logm)
 		int count = countLessNums(nums1, nums2, mid);
 		if(count < k) minV = mid+1;
 		else maxV = mid-1;
@@ -112,7 +119,7 @@ void solve() {
 	
 	Optimisation 3:
 	Using binary search (like matrixMedian problem)
-	Time: O(m+n), Space: O(1)
+	Time: O(32*(logn + logm)), Space: O(1)
 	*/
 	cout<<kthElement2(nums1, nums2, k)<<endl;
 

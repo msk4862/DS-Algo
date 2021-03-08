@@ -54,9 +54,11 @@ int median1(vector<vector<int>>& mat) {
 	// int l = minV, h = maxV;
 	// for each mid, count how many nums are there
 	// less than mid
+	// value of maxV in worst case will 2^32 - 1 => log(2^32) = 32
 	while(minV <= maxV) {
 		int mid = (maxV-minV)/2 + minV;
 
+		// O(r*log(c)) (log(columns) for each row)
 		int count = countNums(mat, mid);
 
 		if(count < med) minV = mid+1;
@@ -83,6 +85,12 @@ void solve() {
 	time: O((r*c)log(r*c)), space: O(r*c)
 	*/
 
+
+	/*
+	Binary search appoach:
+	median value will have r*c/2 nums that are less than it
+	time: O(32*r*log(c)), space: O(1)
+	*/
 	cout<<median1(mat)<<" ";
 
 }
