@@ -8,7 +8,7 @@ using namespace std;
     cin.tie(nullptr); \
     cout.tie(nullptr);
 
-bool canColor(vector<vector<int>> g, int curV, int curColor, vector<int> colors, vector<int> vertexColor) {
+bool canColor(vector<vector<int>>& g, int curV, int curColor, vector<int>& colors, vector<int>& vertexColor) {
 	// checking if any neighbour has been already colored with curColor
 	for (int i = 0; i < g.size(); ++i) {
 		if(g[curV][i] && vertexColor[i] == curColor) return false;
@@ -17,7 +17,7 @@ bool canColor(vector<vector<int>> g, int curV, int curColor, vector<int> colors,
 	return true;
 }
 
-bool isPossible(vector<vector<int>> g, int curV, vector<int> colors, vector<int>& vertexColor) {
+bool isPossible(vector<vector<int>>& g, int curV, vector<int> colors, vector<int>& vertexColor) {
 	// all vertices have been coloreds
 	if(curV == g.size()) {
 		return true;

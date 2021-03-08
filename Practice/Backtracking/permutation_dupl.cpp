@@ -28,7 +28,7 @@ At recursion level 0, we have [1] + permute[2,3,4,1], [2] + permute[1,3,4,1], [3
 
 // for complexity: we will have n! leaf nodes at max
 // and for each leaf node we have branch of depth n => O(n!*n)
-void permute(vector<int> ar, int first, int n, vector<vector<int>>& res) {
+void permute(vector<int>& ar, int first, int n, vector<vector<int>>& res) {
 	if(first == n) res.push_back(ar);
 
 	unordered_set<int> hasBeenFirst;

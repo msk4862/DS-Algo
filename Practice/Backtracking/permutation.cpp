@@ -10,7 +10,7 @@ using namespace std;
 
 // for complexity: we will have n! leaf nodes at max
 // and for each leaf node we have branch of depth n => O(n!*n)
-void permute(vector<int> ar, int first, int n, vector<vector<int>> &res) {
+void permute(vector<int>& ar, int first, int n, vector<vector<int>> &res) {
 	if(first == n) res.push_back(ar);
 
 	for (int i = first; i < n; ++i) {
