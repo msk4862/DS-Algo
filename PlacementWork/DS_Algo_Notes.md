@@ -9,8 +9,7 @@
 	
 - __Application of Runtime Polymorphism or Dynamic Binding__:
 
-		Let the code has a simple base class Employee , the class contains virtual functions like raiseSalary(), transfer(), promote(), etc. 		    Different types of employees like Manager, Engineer, etc. may have their own implementations of the virtual functions present in base 			class Employee. 
-		In our complete software, we just need to pass a list of employees everywhere and call appropriate functions without even knowing the 			type of employee. For example, we can easily raise the salary of all employees by iterating through the list of employees. Every type of 			employee may have its own logic in its class, but we don’t need to worry about them because if raiseSalary() is present for a specific 			employee type, only that function would be called.
+		Let the code has a simple base class Employee , the class contains virtual functions like raiseSalary(), transfer(), promote(), etc. 		    Different types of employees like Manager, Engineer, etc. may have their own implementations of the virtual functions present in base class Employee. In our complete software, we just need to pass a list of employees everywhere and call appropriate functions without even knowing the type of employee. For example, we can easily raise the salary of all employees by iterating through the list of employees. Every type of employee may have its own logic in its class, but we don’t need to worry about them because if raiseSalary() is present for a specific employee type, only that function would be called.
 
 	
 	
@@ -36,13 +35,18 @@ int a[10];
 int *p;
 
 p = a;	// legal
-a = p;	// illegal
+a = p;	// illegal [beccause array name is a const pointer it can't be modiefied]
 
 //also
 p++;	// legal
 a++;	// illegal
 ```
 
+```
+int a[10];
+a+1 // second array element adderess
+&a+1 // skips the whole array as &a represents whole array.
+```
 
 ## Algorithm Analysis
 
