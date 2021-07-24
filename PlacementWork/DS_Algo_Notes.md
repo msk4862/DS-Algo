@@ -11,8 +11,32 @@
 
 		Let the code has a simple base class Employee , the class contains virtual functions like raiseSalary(), transfer(), promote(), etc. 		    Different types of employees like Manager, Engineer, etc. may have their own implementations of the virtual functions present in base class Employee. In our complete software, we just need to pass a list of employees everywhere and call appropriate functions without even knowing the type of employee. For example, we can easily raise the salary of all employees by iterating through the list of employees. Every type of employee may have its own logic in its class, but we don’t need to worry about them because if raiseSalary() is present for a specific employee type, only that function would be called.
 
-	
-	
+## C Lang Misc
+```
+int d, c;
+c = 5, 9;
+d = (3, 8);
+printf("%d, %d", c, d);		// 5, 8
+````
+
+```
+int d=3;
+printf("%d");	// garbage value
+```
+
+```
+union { 
+    int y; 
+    char z; 
+ }u;
+ union { 
+    int y; 
+    char z; 
+ }u;
+ 
+ sizeof(u);	// 4 => sizeof longest memeber
+```
+
 ## Pointers
 
 ```
